@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Hello Facebook</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+	<div class="container">
+		<h3>Hello, <span th:text="${facebookProfile.lastName}">Some User</span>!</h3>
+
+		<img th:if="${facebookProfile.cover}" th:src="${facebookProfile.cover.source}"/>
+
+		<h4>Here is your feed:</h4>
+
+		<div th:each="post:${feed}">
+			<b th:text="${post.from.name}">from</b> wrote:
+			<p th:text="${post.message}">message text</p>
+			<img th:if="${post.picture}" th:src="${post.picture}"/>
+			<hr/>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
